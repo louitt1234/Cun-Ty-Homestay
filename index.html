@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cún Tý Homestay – Nghỉ dưỡng giữa Thiên nhiên Hoang Dã</title>
+  <meta name="description" content="Cún Tý Homestay – Nơi nghỉ dưỡng lãng khuẩn giữa thắng cảnh thiên nhiên hoang dã, có cún tý, Wi-Fi, bếp chung, xe đạp, bể cá, sân hiên." />
+  <meta name="theme-color" content="#2d6a4f" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐕</text></svg>" />
+  <style>
+    :root {
+      --green: #2d6a4f;
+      --green-dark: #1b4332;
+      --green-light: #40916c;
+      --bg: #f8faf8;
+      --card: #ffffff;
+      --text: #2d3436;
+      --muted: #636e72;
+      --accent: #e17055;
+      --border: #dfe6e9;
+      --shadow: 0 8px 30px rgba(0,0,0,.12);
+      --radius: 16px;
+      --font: 'Segoe UI', 'Roboto', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--green); text-decoration:none; }
+    img { max-width:100%; display:block; }
+    .container { max-width:1100px; margin:0 auto; padding:0 20px; }
+
+    /* HEADER */
+    header {
+      background: var(--green-dark);
+      color:#fff;
+      padding: 28px 0;
+      position: sticky; top:0; z-index:100;
+      box-shadow: 0 2px 20px rgba(0,0,0,.18);
+    }
+    header .container { display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    .logo { display:flex; align-items:center; gap:12px; }
+    .logo .logo-icon { font-size:36px; }
+    .logo span { font-size:22px; font-weight:700; letter-spacing:.5px; }
+    nav ul { list-style:none; display:flex; gap:22px;flex-wrap:wrap; }
+    nav a { color:#fff; font-size:15px; font-weight:500; transition:.2s; position:relative; }
+    nav a:hover { color:#ffd166; }
+    nav a::after { content:''; position:absolute; left:0; bottom:-4px; width:0; height:2px; background:#ffd166; transition:.2s; }
+    nav a:hover::after { width:100%; }
+    .btn-outline {
+      border:2px solid #fff; color:#fff; padding:10px 22px; border-radius:30px; cursor:pointer;
+      font-size:14px; font-weight:600; transition:.2s; background:transparent;
+    }
+    .btn-outline:hover { background:#fff; color:var(--green-dark); }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 60%, var(--green-light) 100%);
+      color:#fff;
+      padding:70px 0;
+      text-align:center;
+    }
+    .hero .badge {
+      display:inline-block; background:#fff47586; color:var(--green-dark); font-size:13px; font-weight:600;
+      padding:6px 16px; border-radius:30px; margin-bottom:18px; letter-spacing:1px;
+    }
+    .hero h1 { font-size:42px; font-weight:800; margin-bottom:14px; line-height:1.2; }
+    .hero p { font-size:17px; color:#d1e1e6; max-width:720px; margin:0 auto 24px; }
+    .hero .btn-group { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    .btn-primary {
+      background:#ffd166; color:var(--green-dark); padding:14px 32px; border-radius:30px; font-weight:700;
+      font-size:16px; border:none; cursor:pointer; transition:.2s; text-decoration:none; display:inline-block;
+    }
+    .btn-primary:hover { background:#ffe484; transform:translateY(-2px); }
+    .btn-secondary {
+      background:transparent; border:2px solid #fff; color:#fff; padding:14px 32px; border-radius:30px;
+      font-weight:700; font-size:16px; cursor:pointer; transition:.2s;
+    }
+    .btn-secondary:hover { background:#fff; color:var(--green-dark); }
+
+    /* STATS */
+    .stats { background:#fff; padding:40px 0; }
+    .stats .container { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; text-align:center; }
+    .stat h3 { font-size:30px; color:var(--green); font-weight:800; }
+    .stat p { color:var(--muted); font-size:14px; margin:0; }
+
+    /* SERVICES */
+    .section { padding:50px 0; }
+    .section-title { text-align:center; font-size:28px; font-weight:700; color:var(--green-dark); margin-bottom:8px; }
+    .section-sub { text-align:center; color:var(--muted); font-size:15px; margin-bottom:36px; }
+    .services { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+    .service-card {
+      background:var(--card); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow); transition:.3s;
+      border-top:4px solid var(--accent);
+    }
+    .service-card:hover { transform:translateY(-4px); }
+    .service-card .icon { font-size:32px; margin-bottom:12px; }
+    .service-card h3 { font-size:18px; color:var(--green-dark); margin-bottom:8px; }
+    .service-card p { color:var(--muted); font-size:14px; }
+
+    /* ABOUT */
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center; }
+    .about-text p { color:var(--muted); margin-bottom:14px; font-size:16px; }
+    .about-text p strong { color:var(--green-dark); }
+    .about-img { border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); min-height:340px; background:radial-gradient(circle at center, var(--green-light), var(--green-dark)); display:flex; align-items:center; justify-content:center; color:#fff; font-size:60px; }
+    .about-features { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-top:20px; }
+    .about-features span { background:var(--bg); padding:12px 18px; border-radius:12px; font-size:14px; font-weight:600; color:var(--green-dark); }
+
+    /* ROOMS */
+    .rooms { background:#fff; }
+    .room-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; }
+    .room-card { border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:.3s; }
+    .room-card:hover { transform:translateY(-6px); }
+    .room-img { height:200px; display:flex; align-items:center; justify-content:center; font-size:50px; background:#e8f5e9; }
+    .room-body { padding:20px; }
+    .room-body h3 { font-size:20px; color:var(--green-dark); margin-bottom:8px; }
+    .room-body .price { font-size:22px; font-weight:800; color:var(--accent); }
+    .room-body .price small { font-size:14px; font-weight:500; color:var(--muted); }
+    .room-body p { color:var(--muted); font-size:14px; margin:8px 0; }
+    .room-badge { display:inline-block; background:var(--green); color:#fff; font-size:12px; font-weight:700; padding:4px 14px; border-radius:20px; margin-bottom:10px; }
+
+    /* PHOTO GALLERY */
+    .gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
+    .gallery-item { border-radius:var(--radius); overflow:hidden; background:#e8f5e9; aspect-ratio:16/10; display:flex; align-items:center; justify-content:center; font-size:42px; transition:.3s; cursor:pointer; }
+    .gallery-item:hover { transform:scale(1.04); }
+    .gallery-item.alt2 { background:#dcedc8; }
+    .gallery-item.alt3 { background:#c8e6c9; }
+    .gallery-item.alt4 { background:#a5d6a7; }
+
+    /* BOOKING */
+    .booking { background:linear-gradient(135deg, var(--green-dark), var(--green)); color:#fff; border-radius:var(--radius); padding:40px; max-width:800px; margin:0 auto; text-align:center; }
+    .booking h2 { font-size:26px; margin-bottom:16px; }
+    .booking p { color:#d1e1e6; margin-bottom:24px; }
+    .booking .contact-big { font-size:42px; font-weight:800; margin:10px 0; }
+    .booking label { display:block; font-size:14px; font-weight:600; margin-top:18px; }
+    .booking input, .booking textarea {
+      width:100%; padding:14px; border-radius:10px; border:none; background:#fff; color:var(--green-dark);
+      font-size:16px; margin-top:6px; font-family:inherit;
+    }
+    .booking input::placeholder, .booking textarea::placeholder { color:#b2dfdb; }
+    .booking textarea { resize:vertical; min-height:100px; }
+    .booking .btn-submit {
+      background:#ffd166; color:var(--green-dark); padding:14px 32px; border-radius:30px; font-weight:700;
+      font-size:16px; border:none; cursor:pointer; margin-top:24px; transition:.2s; width:100%;
+    }
+    .booking .btn-submit:hover { background:#ffe484; }
+
+    /* FOOTER */
+    footer {
+      background:var(--green-dark); color:#fff; padding:40px 0; text-align:center; margin-top:40px;
+    }
+    footer .logo span { color:#fff; }
+    footer .socials { display:flex; justify-content:center; gap:16px; margin-bottom:20px; }
+    footer .socials a { color:#fff; font-size:24px; }
+    footer p { color:#b2dfdb; font-size:14px; }
+    .legal { display:flex; justify-content:center; gap:30px; margin-top:16px; flex-wrap:wrap; font-size:13px; color:#90a4ae; }
+    .legal a { color:#fff; }
+
+    @media (max-width:700px) {
+      .hero h1 { font-size:30px; }
+      .stats .container { grid-template-columns:repeat(2,1fr); }
+      .about-grid { grid-template-columns:1fr; }
+      nav ul { gap:14px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo">
+      <span class="logo-icon">🐕</span>
+      <span>Cún Tý Homestay</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#about">Về chúng tôi</a></li>
+        <li><a href="#services">Dịch vụ</a></li>
+        <li><a href="#rooms">Phòng</a></li>
+        <li><a href="#gallery">Ảnh</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+      </ul>
+    </nav>
+    <a class="btn-outline" href="#contact">Đặt phòng ngay</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <span class="badge">🌿 Nơi nghỉ dưỡng thiên nhiên hoang dã</span>
+    <h1>Cún Tý Homestay</h1>
+    <p>Nơi quy tụ những con cún tý thân yêu, bếp ấm cúng cùng thắng cảnh thiên nhiên hoang dã — một trải nghiệm nghỉ dưỡng đậm chất bình yên và thiên nhiên nhất.</p>
+    <div class="btn-group">
+      <a class="btn-primary" href="#booking">Đặt phòng ngay</a>
+      <a class="btn-secondary" href="#gallery">Xem ảnh</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stat"><h3>🐕 50+</h3><p>Con cún tý</p></div>
+    <div class="stat"><h3>🌲</h3><p>Thiên nhiên hoang dã</p></div>
+    <div class="stat"><h3>🚲</h3><p>Xe đạp cho thuê</p></div>
+    <div class="stat"><h3>🛁</h3><p>Bếp chung tươi mới</p></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="container">
+    <h2 class="section-title">Dịch vụ chính</h2>
+    <p class="section-sub">Cung cấp đầy đủ mọi tiện ích để bạn thư thái, hoàn hảo nhất</p>
+    <div class="services">
+      <div class="service-card">
+        <div class="icon">🐕</div>
+        <h3>Cún Tý mẫu mã</h3>
+        <p>Các con cún tý thân thiện, sạch sẽ, cho thuê trong ngày – lý tưởng cho gia đình, trẻ em và du hành viên yêu động vật.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">📶</div>
+        <h3>Wi-Fi miễn phí</h3>
+        <p>Kết nối Internet ổn định, tốc độ nhanh – phục vụ làm việc từ xa, chụp ảnh và duyệt web mọi lúc mọi nơi.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🍳</div>
+        <h3>Bếp chung</h3>
+        <p>Không gian bếp kết nối, nấu ăn cùng nhau – thưởng thức cơm bát phở, gà tàu, cùng không khí tròn năm.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🚲</div>
+        <h3>Xe đạp miễn phí</h3>
+        <p>Thuê xe đạp để khám phá vùng hoa, núi, thác xung quanh – lựa chọn gọn, tiện lợi, bảo hành trong ngày.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🏞️</div>
+        <h3>Vườn & sân hiên rộng</h3>
+        <p>Giữa khu vườn nhiệt đới và sân hiên thoáng đãng – thích hợp đi dạo, thiền, chụp ảnh, nghĩ nghĩ.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🐠</div>
+        <h3>Bể cá mini</h3>
+        <p>Bể cá cát mini với loài cá thích nghi trong nhà – niềm vui nhỏ bé, sạch sẽ, an toàn cho mọi đối tượng.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container about-grid">
+    <div class="about-text">
+      <h2 class="section-title" style="text-align:left;">Về Cún Tý Homestay</h2>
+      <p style="text-align:left;"><strong>Cún Tý Homestay</strong> nằm trong trang trí thiên nhiên hoang dã – một góc nhỏ yên tĩnh nơi bạn được giải phóng sau một ngày làm việc căng thẳng. Chúng tôi đặt con người và thiên nhiên làm trung tâm, mang lại sự trọn vẹn giữa không gian rộng lớn.</p>
+      <p style="text-align:left;">Mỗi ngôi nhà mang lại trải nghiệm mới: từ chiếc cún tý đang lội cách vào gần, đến lá sốc quęn trên cây, tiếng chim hót trong vườn. Bạn sẽ cảm nhận được sự hòa hợp của một cộng đồng nhỏ gọn – nơi đủ thú vị để đi lại và vừa bình yên để thư giãn.</p>
+      <p style="text-align:left;">Chúng tôi luôn sẵn sàng đón tiếp các gia đình, cặp đôi và du khách single với không gian tự nhiên, dịch vụ tận tâm và bàn ghế sinh thái.</p>
+      <div class="about-features">
+        <span>🐕 Cún tý thân thiện</span>
+        <span>📶 Wi-Fi miễn phí</span>
+        <span>🍳 Bếp chung</span>
+        <span>🚲 Xe đạp</span>
+        <span>🌱 Vườn xanh</span>
+        <span>🛁 Bể cá mini</span>
+      </div>
+    </div>
+    <div class="about-img">🐕</div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section class="section rooms" id="rooms">
+  <div class="container">
+    <h2 class="section-title">Phòng & gói nghỉ dưỡng</h2>
+    <p class="section-sub">Dịch vụ giá rẻ, đa dạng dịch vụ thoải mái, kết hợp bãi cỏ và không gian yên tĩnh</p>
+    <div class="room-grid">
+      <div class="room-card">
+        <div class="room-img">🌲</div>
+        <div class="room-body">
+          <span class="room-badge">Phòng thường</span>
+          <h3>Phòng Tình Yêu</h3>
+          <div class="price">180.000đ <small>/ đêm</small></div>
+          <p>Phòng đơn giản, rộng thoáng, giường đôi, đủ tiện nghi, khung cảnh xanh mát.</p>
+          <p style="color:var(--green-dark); font-weight:600;">★ Đã có cún tý mẫu</p>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-img">🌺</div>
+        <div class="room-body">
+          <span class="room-badge">Phòng gia đình</span>
+          <h3>Phòng Hội Giao</h3>
+          <div class="price">250.000đ <small>/ đêm</small></div>
+          <p>Phòng rộng, nhiều ghế sofa, sân hiên để chụp ảnh, thích hợp gia đình – nhóm bạn.</p>
+          <p>🔥 Nướng ngoài trời có sẵn</p>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-img">🌿</div>
+        <div class="room-body">
+          <span class="room-badge">Gói tiện nghi cao</span>
+          <h3>Gói Hiền Yến</h3>
+          <div class="price">360.000đ <small>/ đêm</small></div>
+          <p>Phần lớn phòng, bếp riêng, phòng tắm riêng, xe đạp và bể cá mini trong gói.</p>
+          <p>🐕 Cún tý miễn phí</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" id="gallery">
+  <div class="container">
+    <h2 class="section-title">Ảnh sân khấu</h2>
+    <p class="section-sub">Cảm hứng từ thiên nhiên – hẹn gặp bạn trong các màn hình đầu tiên</p>
+    <div class="gallery">
+      <div class="gallery-item">🍂</div>
+      <div class="gallery-item alt2">🐕</div>
+      <div class="gallery-item alt3">🌿</div>
+      <div class="gallery-item alt4">🏞️</div>
+      <div class="gallery-item">🚲</div>
+      <div class="gallery-item alt2">🛁</div>
+      <div class="gallery-item alt3">🐠</div>
+      <div class="gallery-item alt4">🌸</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="section" id="booking">
+  <div class="container">
+    <div class="booking">
+      <h2>📞 Đặt phòng ngay</h2>
+      <p>Để nhận báo giá chi tiết, gói linh hoạt và hỗ trợ trực tiếp từ chủ nhà, vui lòng liên hệ qua Zalo.</p>
+      <p class="contact-big">📱 Zalo: 0946979443</p>
+      <p style="color:#d1e1e6; font-size:14px;">Chủ nhà: Đinh Minh Quang</p>
+      <form id="bookingForm">
+        <label>Họ tên <input type="text" placeholder="Nhập họ tên của bạn" required /></label>
+        <label>Địa chỉ/rooms <input type="text" placeholder="Chọn ngày nhận / tên phòng muốn ở" required /></label>
+        <label>Số điện thoại <input type="tel" placeholder="09xxxxxxx" required /></label>
+        <label style="margin-top:18px;">Lưu ý / yêu cầu
+          <textarea placeholder="Ghi rõ ngày ở, số người, yêu cầu đặc biệt (cún tý, xe đạp, bể cá...)"></textarea>
+        </label>
+        <button type="submit" class="btn-submit">✅ Gửi yêu cầu → Zalo</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="logo">
+      <span class="logo-icon">🐕</span>
+      <span>Cún Tý Homestay</span>
+    </div>
+    <div class="socials">
+      <a href="#">📘 FB/IG placeholder</a>
+    </div>
+    <p>📍 Liên hệ: Zalo 0946979443 – Đinh Minh Quang</p>
+    <p>© 2026 Cún Tý Homestay – Bỏ trôi vào thiên nhiên yên bình.</p>
+    <div class="legal">
+      <a href="#">Các điều khoản</a>
+      <a href="#">Chính sách bảo mật</a>
+      <a href="#">Chính sách hủy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Simple form handler — sends booking request to Zalo via wa.me
+  document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = encodeURIComponent(this.querySelector('input[type="text"]').value);
+    const addr = encodeURIComponent(this.querySelector('input[type="text"]:nth-of-type(2)').value);
+    const phone = encodeURIComponent(this.querySelector('input[type="tel"]').value);
+    const msg = encodeURIComponent(
+      `Xin chào! Tôi muốn đặt phòng tại Cún Tý Homestay.<br/>` +
+      `Họ tên: ${name}<br/>` +
+      `Địa chỉ / phòng: ${addr}<br/>` +
+      `SĐT: ${phone}<br/>` +
+      `Lưu ý: <br/>${this.querySelector('textarea').value}`
+    );
+    // Open Zalo chat
+    const zalo = 'https://zalo.me/0946979443';
+    window.open(zalo, '_blank');
+    alert('Rất vui được hỗ trợ! Mình sẽ gọi lại sớm nhất. 🔔');
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
